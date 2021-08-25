@@ -16,9 +16,7 @@ int main() {
     //#endif;
     int B = 0, A = 0;
     while (cin >> A >> B) {
-        if(B > A){
-            cout << (B-A) << endl;
-        }
+            cout << (max(A,B) - min(A,B)) << endl;
         // your stuff here
 
     }
