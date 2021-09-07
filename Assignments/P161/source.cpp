@@ -7,14 +7,13 @@
 
 using namespace std;
 
-bool isGreen(int c_time,int time);
 
 int main(){
 
-    #ifndef ONLINE_JUDGE
-    freopen("uDebug.txt", "r", stdin);
+    //#ifndef ONLINE_JUDGE
+    //freopen("uDebug.txt", "r", stdin);
     //freopen("output.txt", "w", stdout);
-    #endif
+    //#endif
 
     while(1){
         int val;
@@ -30,7 +29,7 @@ int main(){
         for(int i = min;i < 18000;++i){
             int g_count = 0;
             for(int j = 0;j < N;++j){
-                if(isGreen(i,scens[j])) g_count++;
+                if(i % (2 * scens[j]) < scens[j] - 5) g_count++;
                 else break;
             }
             if(g_count == N){
@@ -49,11 +48,4 @@ int main(){
     }
 
     return 0;
-}
-
-bool isGreen(int time,int c_time){
-    if(time % (2 * c_time) < c_time - 5){
-        return true;
-    }
-    else return false;
 }
