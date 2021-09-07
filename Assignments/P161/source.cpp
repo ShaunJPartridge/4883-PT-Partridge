@@ -12,7 +12,7 @@ bool isGreen(int c_time,int time);
 int main(){
 
     #ifndef ONLINE_JUDGE
-    freopen("infile", "r", stdin);
+    freopen("uDebug.txt", "r", stdin);
     //freopen("output.txt", "w", stdout);
     #endif
 
