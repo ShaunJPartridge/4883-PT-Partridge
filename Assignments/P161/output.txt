@@ -1,9 +1,9 @@
 00:00:40
 00:05:00
-Time limit exceeded
+Signals fail to synchronise in 5 hours
 00:00:20
 00:25:40
-Time limit exceeded
+Signals fail to synchronise in 5 hours
 00:00:20
 00:03:00
 00:00:40

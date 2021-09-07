@@ -41,10 +41,10 @@ int main(){
             break;
           }
         }
-        if(!allgreen){ cout << "Time limit exceeded\n";}
+        if(!allgreen){ cout << "Signals fail to synchronise in 5 hours\n";}
           //cout << min << endl;
-          scens.clear();
-          min = INT32_MAX;
+        scens.clear();
+        min = INT32_MAX;
       }
     }
     else {
