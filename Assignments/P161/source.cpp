@@ -6,15 +6,13 @@ using namespace std;
 
 int main(){
 
-  //#ifndef ONLINE_JUDGE
-  //freopen("uDebug.txt", "r", stdin);
-  //freopen("output.txt", "w", stdout);
-  //#endif
+  #ifndef ONLINE_JUDGE
+  freopen("uDebug.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
+  #endif
   vector<int>scens;
-  string line = "";
   int val = 0, min = INT32_MAX;
   int count = 0;
-  bool process = false;
 
   while(cin >> val){
     if (val == 0) {
