@@ -23,21 +23,12 @@ int main(){
     int count = 0;
     for(int i = 0;i < N-1;i++){
       res.push_back(abs(nums[i]-nums[i+1]));
-      //if (i > 0){
-        //if (res[i-1] > res[i]) count++;
-      //}
-      //cout << res[i];
     }
     for(int i = 0;i < res.size();i++){
-      //if ((res[i] < res[i+1] || res[i] > res[i+1]) && res[i] < N-1) count++;
       if(res[i] < N && res[i] != res[i+1]) count++;
     }
-    //is_sorted(res.begin(),res.end())
     if (count == N-1) cout << "Jolly\n";
     else cout << "Not jolly\n";
-    // empty vectors here
-    //cout << endl;
-
   }
   return 0;
 
