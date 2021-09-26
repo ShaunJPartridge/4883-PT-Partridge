@@ -31,6 +31,9 @@ void printPoints(){
 }
 
 int main() {
+
+  freopen("infile","r",stdin);
+  freopen("outfile","w",stdout);
   cin >> c;
   while(c--){
     cin >> n;
