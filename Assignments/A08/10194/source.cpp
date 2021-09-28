@@ -79,6 +79,9 @@ bool cmp(Team t1,Team t2){
 
 int main() {
   int N;
+
+  freopen("uDebug", "r", stdin);
+  freopen("outfile.txt", "w", stdout);
   cin >> N;
   cin.ignore();
 
