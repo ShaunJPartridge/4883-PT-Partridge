@@ -70,11 +70,23 @@ void printResults(vector<Team>Teams){
       Teams[i].gamesPlayed << "g " << "(" << Teams[i].wins << "-" <<
       Teams[i].ties << "-" << Teams[i].losses << "), " << Teams[i].goalDifference << "gd " << "(" << Teams[i].goalsScored << "-" << Teams[i].goalsAgainst << ")" << endl;
     }
+    //cout << endl;
 }
 
 bool cmp(Team t1,Team t2){
   if(t1.name.compare(0,t2.name.size(),t2.name) == 0 || t2.name.compare(0,t1.name.size(),t1.name) == 0) return t1.name.size() > t2.name.size();
   else return t1.name < t2.name;
+}
+
+bool compareTeams(Team t1, Team t2){
+  return t1.points > t2.points || t1.points == t2.points
+  && (t1.wins > t2.wins || t1.wins == t2.wins
+  && (t1.goalDifference > t2.goalDifference || t1.goalDifference == t2.goalDifference 
+  && (t1.goalsScored > t2.goalsScored || t1.goalsScored == t2.goalsScored 
+  && (t1.gamesPlayed < t2.gamesPlayed || t1.gamesPlayed == t2.gamesPlayed 
+  && (transform(t1.name.begin(),t1.name.begin()+2,t1.name.begin(),::tolower) < transform(t2.name.begin(),t2.name.begin()+2,t2.name.begin(),::tolower)
+  //|| transform(t1.name.begin(),t1.name.end(),t1.name.begin(),::tolower) < transform(t2.name.begin(),t2.name.end(),t2.name.begin(),::tolower)
+  ))))); //|| tolower(t1.name[0]) == tolower(t2.name[0]))))));
 }
 
 int main() {
@@ -101,22 +113,27 @@ int main() {
     cin.ignore();
     for(int i = 0;i < amtTeams;i++){
       getline(cin,team);
+      //cout << team << " ";
       Teams.push_back(Team(team));
     }
+    //cout <<endl;
     
     cin >> gamesPlayed;
     cin.ignore();
-    if(gamesPlayed == 0){
-      sort(Teams.begin(),Teams.end(),cmp);
-      printResults(Teams);
-    }
-    else{
+    //if(gamesPlayed == 0){
+      //sort(Teams.begin(),Teams.end(),compareTeams);
+      //printResults(Teams);
+      //cout << endl;
+    //}
+    //else{
       for(int i = 0;i < gamesPlayed;i++){
         getline(cin,game);
+        //cout << game << " ";
         string t1, t2;
         int tmp = 0, count = 0;
         t1 = game.substr(0,game.find('@'));
-        t2 = game.substr(game.find('@')+1,game.at('\n'));
+        t2 = game.substr(game.find('@')+1,game.find('\n'));
+        //cout << t1 << " " << t2;
         for(int j = 0;j < Teams.size();j++){
           if(Teams[j].myGame(t1) || Teams[j].myGame(t2)) {
             count++;
@@ -150,16 +167,20 @@ int main() {
           Teams[tmp].points++;
         }
       } 
+      //cout << endl;
       for(int i = 0;i < Teams.size();i++){
         Teams[i].goalDifference = Teams[i].goalsScored - Teams[i].goalsAgainst;
       }
 
-      sort(Teams.begin(),Teams.end(),[](const Team& lhs,const Team& rhs){
-      return (lhs.points > rhs.points) || (lhs.wins > rhs.wins); //|| (lhs.goalDifference > rhs.goalDifference);// , (lhs.goalsScored > rhs.goalsScored) || (lhs.gamesPlayed < rhs.gamesPlayed);
-      });
+      //sort(Teams.begin(),Teams.end(),[](const Team& lhs,const Team& rhs){
+      //return (lhs.points > rhs.points) || (lhs.wins > rhs.wins); //|| (lhs.goalDifference > rhs.goalDifference);// , (lhs.goalsScored > rhs.goalsScored) || (lhs.gamesPlayed < rhs.gamesPlayed);
+      //});
+      sort(Teams.begin(),Teams.end(),compareTeams);
       printResults(Teams);
+      //cout << "\n";
       // process vectors here???
-      if(N) cout << endl;
+      if(N != 0) cout << endl;
     }
-  }
+  //}
+  return 0;
 }
