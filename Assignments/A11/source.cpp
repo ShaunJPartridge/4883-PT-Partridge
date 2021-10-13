@@ -4,29 +4,39 @@
 
 using namespace std;
 
-void printMatrix(vector<vector<int>>&M){
-  for(int i = 0; i < M.size();i++){
-    for(int j = 0; j < M[i].size();j++){
-      cout << M[i][j] << " ";
-    }
-    cout << endl;
-  }
-}
-
-void printArray(vector<int>&A){
-  for(auto i: A){
-    cout << i << " ";
-  }
-  cout << endl;
-}
-
-int kadane(vector<int>&A){
+int kadane(vector<int>&A,int start,int finish,int N){
   int maxSum = INT32_MIN, cSum = 0;
-  for(auto i:A){
-    cSum += i;
-    maxSum = max(cSum,maxSum);
-    if(cSum < 0) cSum = 0;
+  finish = -1;
+  
+  int lStart = 0;
+  for(int i =0;i < N;i++){
+    cSum += A[i];
+    if(cSum < 0){
+      cSum = 0;
+      lStart = i + 1;
+    }
+    else if(cSum > maxSum){
+      maxSum = cSum;
+      start = lStart;
+      finish = i;
+    }
   }
+
+  if(finish != -1){
+    return maxSum;
+  }
+
+  // if all elements are negative
+  maxSum = A[0];
+  start = finish = 0;
+
+  for(int i = 1;i < N;i++){
+    if(A[i] > maxSum){
+      maxSum = A[i];
+      start = finish = i;
+    }
+  }
+
   return maxSum;
 }
 
@@ -42,30 +52,28 @@ int main(){
           cin >> val;
           M[i][j] = val;
           //cout << M[i][j] << " ";
-        }//cout << "\n" << kadane(M[i]) << endl;
+        }
         //cout << endl;
       }
 
-      //printMatrix(M);
-      //cout << endl;
+      int maxSum = INT32_MIN, currSum = 0;
+      int start, finish;
       // modify matrix here
-      //for(int i = 0;i < N;i++){
-        //vector<int>temp(N);
-        //for(int j = 0;j < N;j++){
-          //for(int k = 0;k < N;k++){
-            //temp[k] = M[k][j];
-          //}
-          // process 
-          //cout << kadane(temp) << endl;
-          //M[i][j] += M[i-1][j];
-          //cout << M[j][i] << " ";
-        //}
-        
-        //cout << endl;
-      //}
-      
+      for(int i = 0;i < N;i++){
+        vector<int>temp(N,0);
+        for(int j = i;j < N;j++){//j = i
+          for(int k = 0;k < N;k++){
+            temp[k] += M[k][j];
+          }
+          
+          currSum = kadane(temp,start,finish,N);
 
-      cout << endl;
+          if(currSum > maxSum){
+            maxSum = currSum;
+          } 
+        }
+      }
+      cout << maxSum << endl;
       M.clear();
     }
 
