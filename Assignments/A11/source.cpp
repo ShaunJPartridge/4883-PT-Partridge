@@ -43,6 +43,10 @@ int kadane(vector<int>&A,int start,int finish,int N){
 int main(){
 
     int N = 0;
+
+    freopen("infile", "r", stdin);
+    freopen("outfile", "w", stdout);
+    
     while(cin >> N){
       int val = 0;
       vector<vector<int>>M(N);

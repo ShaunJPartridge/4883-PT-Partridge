@@ -6,7 +6,12 @@ using namespace std;
 int main()
 {  
     int T;
+
+    freopen("uDebug", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    
     cin >> T;
+
     while ( T-- )
     {
         int v, e;
