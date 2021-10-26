@@ -1,158 +1,134 @@
-#include <map>
-#include <vector>
-#include <string>
-#include <list>
-#include <set>
-#include <queue>
+// A C++ program for Dijkstra's single source shortest path algorithm.
+// The program is for adjacency list representation of the graph
 #include <iostream>
+#include <limits.h>
+#include <vector>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h> 
+#include <string>
+#include <utility>
+#include <set>
+#include <list>
+#include <algorithm>
+#include <queue>
 
 using namespace std;
 
 # define INF 0x3f3f3f3f
+int V;
 
-int Time;
- 
-typedef pair<int, int> iPair;
-
-// This class represents a directed graph using
-// adjacency list representation
-class Graph
+// A utility function to print the constructed distance array
+void printSolution(int dist[])
 {
-    int V;    // No. of vertices
-  
-    // In a weighted graph, we need to store vertex
-    // and weight pair for every edge
-    list< pair<int, int> > *adj;
-  
-public:
-    Graph(int V);  // Constructor
-  
-    // function to add an edge to graph
-    void addEdge(int u, int v, int w);
-  
-    // prints shortest path from s
-    void shortestPath(int s);
-};
-  
-// Allocates memory for adjacency list
-Graph::Graph(int V)
-{
-    this->V = V;
-    adj = new list<iPair> [V];
-}
-  
-void Graph::addEdge(int u, int v, int w)
-{
-    adj[u].push_back(make_pair(v, w));
-    adj[v].push_back(make_pair(u, w));
-}
-  
-// Prints shortest paths from src to all other vertices
-void Graph::shortestPath(int src)
-{
-    // Create a priority queue to store vertices that
-    // are being preprocessed. This is weird syntax in C++.
-    // Refer below link for details of this syntax
-    // https://www.geeksforgeeks.org/implement-min-heap-using-stl/
-    priority_queue< iPair, vector <iPair> , greater<iPair> > pq;
-  
-    // Create a vector for distances and initialize all
-    // distances as infinite (INF)
-    vector<int> dist(V, INF);
-  
-    // Insert source itself in priority queue and initialize
-    // its distance as 0.
-    pq.push(make_pair(0, src));
-    dist[src] = 0;
-  
-    /* Looping till priority queue becomes empty (or all
-      distances are not finalized) */
-    while (!pq.empty())
-    {
-        // The first vertex in pair is the minimum distance
-        // vertex, extract it from priority queue.
-        // vertex label is stored in second of pair (it
-        // has to be done this way to keep the vertices
-        // sorted distance (distance must be first item
-        // in pair)
-        int u = pq.top().second;
-        pq.pop();
-  
-        // 'i' is used to get all adjacent vertices of a vertex
-        list< pair<int, int> >::iterator i;
-        for (i = adj[u].begin(); i != adj[u].end(); ++i)
-        {
-            // Get vertex label and weight of current adjacent
-            // of u.
-            int v = (*i).first;
-            int weight = (*i).second;
-  
-            //  If there is shorted path to v through u.
-            if (dist[v] > dist[u] + weight)
-            {
-                // Updating distance of v
-                dist[v] = dist[u] + weight;
-                pq.push(make_pair(dist[v], v));
-            }
-        }
-    }
-  
-    // Print shortest distances stored in dist[]
-    cout << "Vertex   Distance from Source\n";
-    for (int i = 0; i < V; ++i)
-        //printf("%d \t\t %d\n", i, dist[i]);
-        cout << i + 1 << "       " << dist[i] << endl;
+	cout <<"Vertex \t Distance from Source" << endl;
+	for (int i = 1; i <= V; i++)
+		cout << i << " \t\t"<<dist[i]<< endl;
 }
 
-int main(){
+
+void dijkstra(vector<pair<int,int> > adj[], int src,int time)
+{
+  priority_queue <pair<int, int>> pq;
+  //int N = V;
+	int dist[101];
+  
+  for(int i = 1;i <= V;i++){
+    dist[i] = INF;
+  }
+  pq.push(make_pair(src,0));
+  dist[src] = 0;
+
+  int v, t, u, w, count = 0;
+  while(!pq.empty()){
     
+    v = pq.top().first;
+    t = pq.top().second;
+    pq.pop();
+    
+    for (int i = 0; i < adj[v].size(); i++)
+    {
+      u = adj[v][i].first;
+      w = adj[v][i].second;    
+
+      if(dist[v] + w < dist[u]){
+              
+        dist[u] = dist[v] + w;
+        pq.push(make_pair(u,dist[u]));
+      }
+    }
+
+  }
+  
+  for(int i = 1;i <= V;i++){
+    if(dist[i] <= time){
+      count++;
+    }
+  }
+
+  cout << count;
+}
+
+void addEdge(vector<pair<int,int>>adj[], int u, int v,int w)
+{
+    adj[u-1].push_back(make_pair(v,w));
+    adj[v-1].push_back(make_pair(u,w));
+}
+
+void printGraph(vector<pair<int,int> > adj[], int V)
+{
+    int v, w;
+    for (int u = 1; u <= V; u++)
+    {
+        cout << "Node " << u << " makes an edge with \n";
+        for (auto it = adj[u].begin(); it!=adj[u].end(); it++)
+        {
+            v = it->first;
+            w = it->second;
+            cout << "\tNode " << v << " with edge weight ="
+                 << w << "\n";
+        }
+        cout << "\n";
+    }
+}
+
+
+int main()
+{
+  int TC;
+
   freopen("infile", "r", stdin);
   freopen("outfile", "w", stdout);
 
-  int TC, N, E, T, M;
-  string blank;
-
   cin >> TC;
 
-  while(TC--){
+  for(int i = 0; i < TC;i++){
+
+    string blank;
     getline(cin,blank);
-    int start, finish, time;
     
-    if(blank.length() == 0){
-      cin >> N;
-      Graph G(N);
-      //cout << N << " ";
-      cin >> E;
-      //cout << E << " ";
-      cin >> Time;
-      //cout << T << " ";
-      cin >> M;
-      //cout << M << endl;
+    if(blank.empty()){
+      int E = 0, T = 0, M = 0;
+      cin >> V;
+      //V = N;
+      vector<pair<int,int>>G[101];
+      cin >> E >> T >> M;
+
       for(int i = 0;i < M;i++){
+        int start, finish, time;
         cin >> start >> finish >> time;
-        //addEdge(G,start,finish);
-        G.addEdge(start,finish,time);
-        //G[start].push_back(finish,time);
-        //G[finish].push_back(make_pair(start,time));
-        //cout << G[start][finish] << endl;
-        cout << start << "," << finish << "," << time << endl; 
+        G[start].push_back(make_pair(finish,time));
+        G[finish].push_back(make_pair(start,time));
       }
-      
-      //for (i = G->begin(); i != G->end(); ++i){
-        //cout << i->first << i->second << endl;
-      //}
-      cout << E << endl;
-      G.shortestPath(0);
-      //G.printGraph();
+
+      dijkstra(G,E,T);
+        
     }
-    cout << endl;
-    //for(int i = 0;i < N;i++){
-      //G[i].clear();
-    //}
-    
+    if(i == TC - 1){
+      cout << "\n";
+    }
+    else cout << "\n\n";
   }
 
-
-
-    return 0;
+	return 0;
 }
+
