@@ -15,8 +15,8 @@ using namespace std::chrono;
 struct sortCompare {
     int*             data;  // array of numbers
     int*             copy;  // copy of array to actually sort
-    int              n;     // size or number of values to sort
-    int              m;     // max number
+    int              n=0;     // size or number of values to sort
+    int              m=0;     // max number
     vector< string > sortNames;
 
     sortCompare() {
