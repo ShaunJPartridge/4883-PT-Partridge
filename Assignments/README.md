@@ -2,10 +2,10 @@
 
 |   #   | Folder Link | Assignment Description |
 | :---: | ----------- | ---------------------- |
-|   1    |    [A04](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/P10055)         | P10055 - Hashmat the Brave Warrior                       |
-| 2 | [A05](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/P161) | P161 - Traffic Lights
-|3| [A06](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/P10038) | P10038 - Jolly Jumpers
-|4|[A07](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/P11080) | P11080 - Place the Guards
+|   1    |    [A04](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A04/P10055)         | P10055 - Hashmat the Brave Warrior                       |
+| 2 | [A05](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A05/P161) | P161 - Traffic Lights
+|3| [A06](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A06/P10038) | P10038 - Jolly Jumpers
+|4|[A07](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A07/P11080) | P11080 - Place the Guards
 |5|[A08](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A08) | P10226 - Hardwood Species & P10194 - Football (aka Soccer)
 |6|[A09](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A09) | P10017 - Neverending Towers of Hanoi
 |7|[A10](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A10) | P900 - Brickwall Patterns & P920 - Sunny Mountains 
