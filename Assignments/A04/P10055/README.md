@@ -7,7 +7,7 @@ of this problem. Below is a table containing all of the files used for this prob
 
 |   #   | File Link | File Description |
 | :---: | ----------- | ---------------------- |
-|   1    |    [P10055](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/P10055/10055.pdf)         | PDF file of the problem                       |
+|   1    |    [P10055](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/A04/P10055/10055.pdf)         | PDF file of the problem                       |
 |   2    |    [Banner](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/P10055/banner.txt)         | Banner for assignment                       |
 |   3    |    [Output](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/P10055/output.txt)         | Output file                       |
 |   4    |    [Src](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/P10055/source.cpp)         | Source code for the problem                       |
