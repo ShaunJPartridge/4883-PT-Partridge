@@ -100,7 +100,7 @@ struct sortCompare {
 int main() {
   // ints up to 10,000 work fine with all sorting algorithms
   // ints up to 1,000,000 struggle with quicksort and radixSort
-  sortCompare SC("rnums4.dat");
+  sortCompare SC("rnums5.dat");
 
   for (int i = 0; i < SC.sortNames.size(); i++) {
       SC.callSortMethod(SC.sortNames[i]);
