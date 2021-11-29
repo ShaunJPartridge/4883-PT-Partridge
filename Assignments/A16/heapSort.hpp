@@ -1,11 +1,12 @@
 // Heap Sort in C++
 
 #include <iostream>
+#include <vector>
 
 namespace HeapSort {
     using namespace std;
 
-    void heapify(int arr[], int n, int i) {
+    void heapify(vector<int>& arr, int n, int i) {// was arr[]
         // Find largest among root, left child and right child
         int largest = i;
         int left = 2 * i + 1;
@@ -25,7 +26,7 @@ namespace HeapSort {
     }
 
     // main function to do heap sort
-    void heapSort(int arr[], int n) {
+    void heapSort(vector<int>&arr, int n) {// was arr[]
         // Build max heap
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(arr, n, i);

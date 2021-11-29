@@ -2,6 +2,7 @@
 // https://www.programiz.com/dsa/quick-sort
 
 #include <iostream>
+#include<vector>
 
 namespace QuickSort {
 
@@ -15,9 +16,9 @@ namespace QuickSort {
     }
 
     // function to rearrange array (find the partition point)
-    int partition(int array[], int low, int high) {
+    int partition(vector<int>& arr, int low, int high) {// was array[]
         // select the rightmost element as pivot
-        int pivot = array[high];
+        int pivot = arr[high];
 
         // pointer for greater element
         int i = (low - 1);
@@ -25,35 +26,35 @@ namespace QuickSort {
         // traverse each element of the array
         // compare them with the pivot
         for (int j = low; j < high; j++) {
-            if (array[j] <= pivot) {
+            if (arr[j] <= pivot) {
                 // if element smaller than pivot is found
                 // swap it with the greater element pointed by i
                 i++;
 
                 // swap element at i with element at j
-                swap(&array[i], &array[j]);
+                swap(&arr[i], &arr[j]);
             }
         }
 
         // swap pivot with the greater element at i
-        swap(&array[i + 1], &array[high]);
+        swap(&arr[i + 1], &arr[high]);
 
         // return the partition point
         return (i + 1);
     }
 
-    void quickSort(int array[], int low, int high) {
+    void quickSort(vector<int>& arr, int low, int high) {// was array[]
         if (low < high) {
             // find the pivot element such that
             // elements smaller than pivot are on left of pivot
             // elements greater than pivot are on righ of pivot
-            int pi = partition(array, low, high);
+            int pi = partition(arr, low, high);
 
             // recursive call on the left of pivot
-            quickSort(array, low, pi - 1);
+            quickSort(arr, low, pi - 1);
 
             // recursive call on the right of pivot
-            quickSort(array, pi + 1, high);
+            quickSort(arr, pi + 1, high);
         }
     }
 }  // namespace quick

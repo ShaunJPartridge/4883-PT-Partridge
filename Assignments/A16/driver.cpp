@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "countSort.hpp"
 #include "heapSort.hpp"
@@ -13,15 +14,17 @@ using namespace std;
 using namespace std::chrono;
 
 struct sortCompare {
-    int*             data;  // array of numbers
-    int*             copy;  // copy of array to actually sort
+    //int*             data;  // array of numbers
+    vector<int> data;
+    vector<int> copy;
+    //int*             copy;  // copy of array to actually sort
     int              n=0;     // size or number of values to sort
     int              m=0;     // max number
     vector< string > sortNames;
 
-    sortCompare() {
+    sortCompare(string filename) {
         m = 1073741824;
-        loadData("rnums.dat");
+        loadData(filename);
         sortNames = {"countSort", "heapSort", "quickSort", "radixSort"};
     }
 
@@ -34,7 +37,8 @@ struct sortCompare {
     }
 
     void copyArray() {
-        copy = new int[n];
+        //copy = new int[n];
+        copy.resize(n);
 
         for (int i = 0; i < n; i++) {
             copy[i] = data[i];
@@ -45,13 +49,14 @@ struct sortCompare {
         ifstream fin;
         fin.open(fileName);
         fin >> n;
-        data = new int[n];
+        //data = new int[n];
+        data.resize(n);
         for (int i = 0; i < n; i++) {
             fin >> data[i];
         }
     }
 
-    void writeArray(int* data, string name) {
+    void writeArray(vector<int> data, string name) {
         ofstream fout;
         fout.open(name);
         for (int i = 0; i < n; i++) {
@@ -69,7 +74,7 @@ struct sortCompare {
         auto start = high_resolution_clock::now();
 
         if (sortName == "countSort") {
-            CountSort::countSort(copy, n, m);
+            CountSort::countSort(copy, n,m);
         } else if (sortName == "heapSort") {
             HeapSort::heapSort(copy, n);
         } else if (sortName == "quickSort") {
@@ -86,19 +91,20 @@ struct sortCompare {
         
         writeArray(copy, sortName + ".out");
 
-        delete[] copy;
+        //delete[] copy;
+        copy.clear();
     }
 };
 
 // Driver code
 int main() {
-    sortCompare SC;
+  // ints up to 10,000 work fine with all sorting algorithms
+  // ints up to 1,000,000 struggle with quicksort and radixSort
+  sortCompare SC("rnums3.dat");
 
-    for (int i = 0; i < SC.sortNames.size(); i++) {
-        SC.callSortMethod(SC.sortNames[i]);
-    }
+  for (int i = 0; i < SC.sortNames.size(); i++) {
+      SC.callSortMethod(SC.sortNames[i]);
+  }
 
-    cout << SC.sortNames[0] << endl;
-
-    return 0;
+  return 0;
 }
