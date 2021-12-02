@@ -1,7 +1,7 @@
 # P161 - Traffic Lights
 
 ### 
-Click [here](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/P10055/10055.pdf) to view the pdf
+Click [here](https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/A05/P161/p161.pdf) to view the pdf
 of this problem. Below is a table containing all of the files used for this problem.
 
 |   #   | File Link | File Description |
