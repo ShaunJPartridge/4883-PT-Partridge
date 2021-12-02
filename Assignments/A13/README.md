@@ -1,4 +1,3 @@
-https://github.com/ShaunJPartridge/4883-PT-Partridge/blob/main/Assignments/A13/1112.pdf
 # P1112 - Mice and Maze
 
 ### 
