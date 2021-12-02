@@ -13,5 +13,3 @@
 |9|[A13](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A13) | P11112 - Mice and Maze
 |10|[A14](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A14) | P100 - The 3n+1 Problem, P10370 - Above Average, & P10783 - Odd Sum
 |11|[A15](https://github.com/ShaunJPartridge/4883-PT-Partridge/tree/main/Assignments/A15) | Problem Presentation - My take on a problem
-|12|[A16]()| Sorting Experiment
-|13|[A17]() | P112 - Tree Summing
